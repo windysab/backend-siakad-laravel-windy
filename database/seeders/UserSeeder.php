@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'email' => 'windysabtami85@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('12345'),
+            'roles' => 'admin',
         ]);
 
     }
