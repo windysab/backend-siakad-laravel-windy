@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,26 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+// Route::
+//     middleware('auth:sanctum')
+//     ->prefix('schedules')
+//     ->group(function () {
+//         Route::get('/', [ScheduleController::class, 'index']);
+//         Route::post('/', [ScheduleController::class, 'store']);
+//         Route::get('/{id}', [ScheduleController::class, 'show']);
+//         Route::put('/{id}', [ScheduleController::class, 'update']);
+//         Route::delete('/{id}', [ScheduleController::class, 'destroy']);
+//     });
+
+
+// Route::apiResource('schedules', ScheduleController::class)
+//     ->middleware('auth:sanctum');
+
+
+Route::apiResource('schedules', ScheduleController::class)
+    ->middleware('auth:sanctum');

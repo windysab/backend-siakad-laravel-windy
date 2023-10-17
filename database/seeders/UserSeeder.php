@@ -24,5 +24,13 @@ class UserSeeder extends Seeder
             'roles' => 'admin',
         ]);
 
+        User::create([
+            'name' => 'Bahri Admin',
+            'email' => 'bahri@fic8.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('12345678'),
+            'roles' => 'admin',
+        ]);
+
     }
 }
