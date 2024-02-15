@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +16,39 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
+Route::get('/', function () {
+    return view('pages.auth.auth-login');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('home', function () {
+        return view('pages.app.dashboard-siakad', ['type_menu' => '']);
+    })->name('home');
+    Route::resource('user', UserController::class);
+});
+
+// resource route for subject with middleware auth
+Route::middleware(['auth'])->group(function () {
+    Route::resource('subject', SubjectController::class);
+});
+
+// resource route for schedule with middleware auth
+// Route::middleware(['auth'])->group(function () {
+//     Route::resource('schedule', ScheduleController::class);
 // });
-// Route::get('/', function () {
-//     return view('pages.app.dashboard-siakad', ['type_menu' => '']);
+
+// // get route for generate qrcode with param schedule and with middleware auth
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('generate-qrcode/{schedule}', [ScheduleController::class, 'generateQrCode'])->name('generate-qrcode');
+// });
+
+// // Route::middleware(['auth'])->group(function () {
+// //     Route::get('generate-qrcode', [ScheduleController::class, 'generateQrCode'])->name('generate-qrcode');
+// // });
+
+// // put route for generate qrcode with middleware auth
+// Route::middleware(['auth'])->group(function () {
+//     Route::put('generate-qrcode-update/{schedule}', [ScheduleController::class, 'generateQrCodeUpdate'])->name('generate-qrcode-update');
 // });
 
 // Route::get('/login', function () {
@@ -36,21 +66,3 @@ use App\Http\Controllers\UserController;
 // Route::get('/reset-password', function () {
 //     return view('pages.auth.auth-reset-password');
 // })->name('reset-password');
-
-
-Route::get('/', function () {
-    return view('pages.auth.auth-login');
-});
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('home', function () {
-        return view('pages.app.dashboard-siakad', ['type_menu' => '']);
-    })->name('home');
-    Route::resource('user', UserController::class);
-});
-
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('dashboard', function () {
-//         return view('pages.app.dashboard-siakad', ['type_menu' => '']);
-//     })->name('dashboard');
-// });

@@ -3,10 +3,15 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Khs;
+use App\Models\AbsensiMatkul;
+use Database\Seeders\KhsSeeder;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\SubjectSeeder;
 use Database\Seeders\ScheduleSeeder;
+use Database\Seeders\AbsensiMatkulSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,6 +31,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             SubjectSeeder::class,
             ScheduleSeeder::class,
+            KhsSeeder::class,
+            AbsensiMatkulSeeder::class,
         ]);
     }
 }

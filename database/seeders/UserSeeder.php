@@ -25,12 +25,12 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Bahri Admin',
-            'email' => 'bahri@fic8.com',
+            'name' => 'Azka',
+            'email' => 'azkajihan92@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('12345678'),
-            'roles' => 'admin',
+            'password' => Hash::make('12345'),
+            'roles' => 'mahasiswa',
         ]);
-
     }
 }
+ 

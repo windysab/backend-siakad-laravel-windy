@@ -16,9 +16,33 @@ class SubjectFactory extends Factory
      */
     public function definition(): array
     {
+
+        // $table->id();
+        //     $table->string('title');
+        //     $table->bigInteger('lecturer_id')->unsigned();
+        //     //semester
+        //     $table->integer('semester');
+        //     //tahun akademik
+        //     $table->string('academic_year');
+        //     //sks
+        //     $table->integer('sks');
+        //     //kode mata kuliah
+
+        //     $table->string('code');
+        //     //deskripsi
+        //     $table->text('description');
+        //     $table->timestamps();
+
+
+        //     $table->foreign('lecturer_id', 'lecturerid_foreign')
         return [
-            'title' => fake()->word(),
-            'lecturer_id' => 3,
+            'title' => $this->faker->title(),
+            'lecturer_id' => $this->faker->numberBetween(1, 10),
+            'semester' => $this->faker->numberBetween(1, 10),
+            'academic_year' => '2022/2023',
+            'sks' => $this->faker->numberBetween(1, 10),
+            'code' => $this->faker->word(),
+            'description' => $this->faker->text(),
         ];
     }
 }

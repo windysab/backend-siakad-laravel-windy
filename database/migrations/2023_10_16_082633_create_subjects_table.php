@@ -15,6 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->bigInteger('lecturer_id')->unsigned();
+            //semester
+            $table->integer('semester');
+            //tahun akademik
+            $table->string('academic_year');
+            //sks
+            $table->integer('sks');
+            //kode mata kuliah
+
+            $table->string('code');
+            //deskripsi
+            $table->text('description');
             $table->timestamps();
 
 
